@@ -331,8 +331,12 @@ class RingColorScheme {
   }
 
   /// Get cached paints for [ringNum] ring.
+  /// Clamps ringNum to the valid range to prevent RangeError.
   RingPaints getCirclePaints(int ringNum, Offset center, double width) {
-    return getPaints(center, width)!.elementAt(ringNum - 1);
+    final paints = getPaints(center, width)!;
+    final idx = ringNum - 1;
+    final safeIdx = idx.clamp(0, paints.length - 1);
+    return paints[safeIdx];
   }
 
   /// Get which value should be used for coloring paint.

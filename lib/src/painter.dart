@@ -57,6 +57,8 @@ class DrawRing extends CustomPainter {
     required this.percent,
     required this.color,
     required this.width,
+    this.showTipShadow = true,
+    this.tipShadowColor = const Color(0x99000000),
     Offset? center,
     double? radius,
   })  : assert(percent != null, 'percent is a mandatory param'),
@@ -65,6 +67,11 @@ class DrawRing extends CustomPainter {
         _radius = radius,
         _numCircles = percent ~/ 100 + 1,
         super();
+  /// Whether to show a shadow under the tip of the ring
+  final bool showTipShadow;
+
+  /// Color of the tip shadow
+  final Color tipShadowColor;
 
   /// Percent of ring to paint.
   ///
@@ -105,6 +112,7 @@ class DrawRing extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+
     final center = _center ?? Offset(size.width / 2, size.height / 2);
     final radius = _radius ?? (min(size.width, size.height) - width) / 2;
 
@@ -115,11 +123,18 @@ class DrawRing extends CustomPainter {
     // Calculate cutoff to extra circle at the end of arc
     final cutoff = 100 - ((100 * width) / (pi * 2 * radius));
 
-    // Update colors cache for numbers of circles we are going to paint.
-    color
-      ..updateRingColors(_numCircles)
-      ..setPaints(center, width);
+    // Ensure enough colors/paints are generated for the number of rings needed
+    color.updateRingColors(_numCircles);
+    color.setPaints(center, width);
 
+    // Draw shadow under the tip if enabled and more than 1 ring
+    if (showTipShadow && _numCircles > 1 && sweepAngle > 0.01) {
+      final tipCenter = getSmallCircleCenter(center, radius, startAngle + sweepAngle);
+      final shadowPaint = Paint()
+        ..color = tipShadowColor
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 12);
+      canvas.drawCircle(tipCenter, width * 0.95, shadowPaint);
+    }
     // If number of circles is more than 1, paint only last but one circle
     if (_numCircles > 1) {
       canvas.drawCircle(

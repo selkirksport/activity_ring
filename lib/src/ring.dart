@@ -17,9 +17,16 @@ class Ring extends StatelessWidget {
     this.curve,
     this.duration,
     this.child,
+    this.showTipShadow = true,
+    this.tipShadowColor = const Color.fromARGB(255, 0, 0, 0),
     Key? key,
   })  : assert(width != null, 'width cannot be null'),
         super(key: key);
+    /// Whether to show a shadow under the tip of the ring
+    final bool showTipShadow;
+
+    /// Color of the tip shadow
+    final Color tipShadowColor;
 
   /// Percent of ring to paint.
   ///
@@ -71,6 +78,8 @@ class Ring extends StatelessWidget {
             width: width,
             center: center,
             radius: radius,
+            showTipShadow: showTipShadow,
+            tipShadowColor: tipShadowColor,
           ),
           child: child,
         );
@@ -84,6 +93,8 @@ class Ring extends StatelessWidget {
         width: width,
         center: center,
         radius: radius,
+        showTipShadow: showTipShadow,
+        tipShadowColor: tipShadowColor,
       ),
       child: child,
     );

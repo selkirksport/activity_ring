@@ -19,8 +19,8 @@ Color darken(Color color, double percent) {
 
 /// Brighten a [color] by [percent]
 Color brighten(Color color, double percent) {
-  assert(percent <= 100, 'Brighten percent should not be greater than 100');
-  final strength = percent / 100;
+  final clampedPercent = percent.clamp(0, 100);
+  final strength = clampedPercent / 100;
   return Color.fromARGB(
     color.alpha,
     color.red + ((255 - color.red) * strength).round(),

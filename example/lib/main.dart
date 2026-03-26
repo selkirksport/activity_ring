@@ -2,18 +2,18 @@ import 'package:activity_ring/activity_ring.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart' show CupertinoThemeData;
 
-import 'package:activity_ring_example/constants.dart';
+import 'constants.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const ExampleApp());
+  runApp(const ExampleApp(key: Key('example_app')));
 }
 
 /// Example widget to show Ring widget
 class RingExample extends StatelessWidget {
   // ignore: public_member_api_docs
-  const RingExample({Key key}) : super(key: key);
+  const RingExample({required Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +102,7 @@ class RingExample extends StatelessWidget {
 /// Main Application.
 class ExampleApp extends StatelessWidget {
   // ignore: public_member_api_docs
-  const ExampleApp({Key key}) : super(key: key);
+  const ExampleApp({required Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +123,7 @@ class ExampleApp extends StatelessWidget {
       // onGenerateRoute: router,
       home: const Scaffold(
         body: SafeArea(
-          child: RingExample(),
+          child: RingExample(key: Key('ring_example')),
         ),
       ),
     );

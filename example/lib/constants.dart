@@ -9,6 +9,9 @@ final RingColorScheme ringGradients = RingColorScheme(ringGradients: [
   [Colors.red, Colors.yellow],
   [Colors.yellow, Colors.green],
   [Colors.green, Colors.blue],
+  [Colors.blue, Colors.purple],
+  [Colors.purple, Colors.pink],
+  [Colors.pink, Colors.teal],
 ]);
 
 /// Specify only 1 color per ring
@@ -16,14 +19,18 @@ final RingColorScheme ringColors = RingColorScheme(ringColors: [
   Colors.red,
   Colors.green,
   Colors.blue,
+  Colors.teal,
+  Colors.pink,
+  Colors.purple,
 ], intensity: 20);
 
 /// Specify only gradinet color set for the first ring only.
 /// Other rings will be interpolated.
 final RingColorScheme ringGradient = RingColorScheme(ringGradient: [
-  Colors.red[900],
-  Colors.blue[300],
-]);
+  Colors.red,
+  Colors.blue,
+],
+maxNumRing: 10);
 
 /// Specify only 1 color
 final RingColorScheme ringColor = RingColorScheme(
@@ -32,7 +39,7 @@ final RingColorScheme ringColor = RingColorScheme(
 );
 
 const firstRingPercent = 80.0;
-const secondRingPercent = 140.0;
+const secondRingPercent = 500.0;
 const ringRadius = 40.0;
 const width = 10.0;
 
