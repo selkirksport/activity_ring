@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:activity_ring/src/color.dart';
-import 'package:activity_ring/src/painter.dart';
+import 'package:activity_ringv2/src/color.dart';
+import 'package:activity_ringv2/src/painter.dart';
 
 /// A progress indicator widget with Apple Watch Rings style
 class Ring extends StatelessWidget {

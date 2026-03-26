@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:activity_ring/activity_ring.dart';
+import 'package:activity_ringv2/activity_ring.dart';
 
 /// A helper class to fetch paints easily
 class RingPaints {

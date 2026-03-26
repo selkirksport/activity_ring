@@ -1,7 +1,7 @@
 import 'dart:math';
 
-import 'package:activity_ring/src/color.dart';
-import 'package:activity_ring/src/utilities.dart';
+import 'package:activity_ringv2/src/color.dart';
+import 'package:activity_ringv2/src/utilities.dart';
 import 'package:flutter/material.dart';
 
 /// Draws a full ring with [width] and [radius].
